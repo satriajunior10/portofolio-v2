@@ -1,5 +1,5 @@
 <template>
-  <main class="mt-10 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[65vh] md:min-h-[80vh]">
+  <main class="mt-6 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[50vh] md:min-h-[70vh]">
     <!-- Bagian Teks -->
     <div class="space-y-2 text-center md:text-left px-10">
       <p class="text-amber-200">Hello, I'm</p>
@@ -13,7 +13,7 @@
       </div>
 
       <!-- Deskripsi -->
-      <p class="text-white pr-4 fade-in-from-left">Welcome to My personal website. <span class="wave">👋🏼</span></p>
+      <p class="text-white pr-4 fade-in-from-left">Welcome to my personal website. <span class="wave">👋🏼</span></p>
       <br>
 
       <!-- Tombol Download Resume -->
@@ -27,14 +27,14 @@
 
       <!-- Ikon Sosial Media -->
       <div class="flex items-center justify-center md:justify-start gap-6 mt-6 fadein-bot">
-        <a href="satriamangasijunior@gmail.com">
-          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="/img/Gmail_icon.png" alt="gmail" />
+        <a href="mailto:satriamangasijunior@gmail.com">
+          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="/img/Gmail_icon.png" alt="Gmail" />
         </a>
         <a href="https://www.linkedin.com/in/satriamangasi-junior-861985268/" target="_blank">
-          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="/img/LinkedIn_logo.png" alt="linkedin" />
+          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="/img/LinkedIn_logo.png" alt="LinkedIn" />
         </a>
         <a href="https://github.com/satriajunior10" target="_blank">
-          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png" alt="github" />
+          <img class="w-9 h-9 rounded-full border-2 border-amber-200 transition-transform transform hover:scale-110" src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png" alt="GitHub" />
         </a>
       </div>
     </div>
@@ -43,9 +43,9 @@
     <div class="flex justify-center md:justify-start fadein-right">
       <img 
         alt="avatar"
-        class="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full border-4 border-amber-200 object-cover"
-        :src="'/img/logo2.JPG'"
-      >
+        class="w-[150px] h-[150px] md:w-[300px] md:h-[300px] lg:w-[500px] lg:h-[500px] rounded-full border-4 border-amber-200 object-cover"
+        v-bind:src="'/img/logo2.JPG'"
+      />
     </div>
   </main>
 </template>
@@ -69,6 +69,9 @@ export default {
   },
   methods: {
     tick() {
+      // Matikan animasi typewriter di tampilan mobile
+      if (window.innerWidth <= 768) return;
+
       let typewriter = this.$refs.typewriter;
       if (!typewriter) return;
 
@@ -138,4 +141,32 @@ export default {
   75% { transform: rotate(-10deg); }
   100% { transform: rotate(0deg); }
 }
+
+/* Mobile Only Fixes */
+@media (max-width: 768px) {
+  .fadein-up,
+  .fadein-right,
+  .fade-in-from-left,
+  .fadein-bot {
+    animation: none;
+  }
+
+  .text-4xl {
+    font-size: 2.5rem;
+  }
+
+  .w-\[200px\] {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .w-fit {
+    width: auto !important;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+  }
+}
 </style>
+
